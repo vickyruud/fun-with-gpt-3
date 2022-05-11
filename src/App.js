@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
 
 function App() {
+
+ 
+  
+
+  useEffect(() => {
+    const data = {
+      prompt: "Write a poem about a dog wearing skis",
+      temperature: 0.5,
+      max_tokens: 64,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    };
+
+    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+      },
+      body: JSON.stringify(data),
+    }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => {
+      console.log(err);
+    })
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
