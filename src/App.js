@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function App() {
 
- 
+  const [poem, setPoem] = useState('')
   
   //calls the api
   useEffect(() => {
@@ -23,7 +23,10 @@ function App() {
       },
       body: JSON.stringify(data),
     }).then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data.choices[0])
+        setPoem(data.choices[0].text);
+      })
       .catch(err => {
       console.log(err);
     })
@@ -31,7 +34,10 @@ function App() {
 
 
   return (
-    <div>App</div>
+    <div>
+      App
+      {poem}
+    </div>
   )
 }
 
