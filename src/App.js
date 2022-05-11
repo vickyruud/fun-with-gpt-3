@@ -4,7 +4,7 @@ function App() {
 
  
   
-
+  //calls the api
   useEffect(() => {
     const data = {
       prompt: "Write a poem about a dog wearing skis",
