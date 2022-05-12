@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './styles/app.css'
 import PoemCard from './components/PoemCard';
 
-
+//mock data
 const mockData = {
   text: 'Here goes poem',
   index: 5,
@@ -12,9 +12,10 @@ const mockData = {
 
 function App() {
 
+  //store poem in state
   const [poem, setPoem] = useState('')
   
-  //calls the api
+  //calls the api and stores data in state
   useEffect(() => {
 
     setPoem(mockData.text);
