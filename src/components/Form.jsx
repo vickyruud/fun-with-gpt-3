@@ -23,6 +23,8 @@ function Form() {
 
   return (
     <div>
+      <form onSubmit={handleSubmit}>
+
       <TextField
         id="name-input"
         name="prompt"
@@ -31,8 +33,9 @@ function Form() {
         value={prompt}
         sx={{color: 'white'}}
         onChange={(e) => {setPrompt(e.target.value)}}
-      />
-      <Button variant="contained" onClick={(event) => handleSubmit(event)}>Submit</Button>
+        />
+      <Button variant="contained" color="primary" type="submit">Submit</Button>
+    </form>
     </div>
   )
 }
