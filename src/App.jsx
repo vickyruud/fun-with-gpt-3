@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles/app.css'
+import PoemCard from './components/PoemCard';
 
 
 const mockData = {
@@ -45,10 +46,9 @@ function App() {
 
 
   return (
-    <div>
-      App
-      {poem}
-    </div>
+    <>
+    <PoemCard/>
+    </>
   )
 }
 
