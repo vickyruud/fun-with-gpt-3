@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function TextInput({ getResponse, question, setQuestion }) {
 
@@ -11,7 +11,10 @@ function TextInput({ getResponse, question, setQuestion }) {
   return (
   <div className="flex justify-center">
     <div className="mb-3 xl:w-96">
-        <label htmlFor="exampleFormControlTextarea1" className="form-label inline-block mb-2 text-white font-semibold">
+        <label
+          htmlFor="exampleFormControlTextarea1"
+          className="form-label inline-block mb-2 text-white font-semibold"
+        >
           Ask me about anything!
         </label>
       <textarea
@@ -39,7 +42,13 @@ function TextInput({ getResponse, question, setQuestion }) {
         >
         </textarea>
           <div className='flex justify-center py-2 px-4'>
-    <button  onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  rounded w-32">
+          <button
+            onClick={handleSubmit}
+            className="bg-blue-500 hover:bg-blue-700
+            text-white
+            font-bold py-2 px-4
+            rounded w-32"
+          >
       Submit
     </button>
     </div>
