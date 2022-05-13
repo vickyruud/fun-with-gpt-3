@@ -22,19 +22,16 @@ const LOCAL_STORAGE_KEY = 'funWithGPT'
 function App() {
   
   //store poem in state
-  const [question, setQuestion] = useState('');
-  const [responses, setResponses] = useState(sampleData.reverse())
-  console.log(responses)
+  const [responses, setResponses] = useState(sampleData.reverse());
 
-  //stores the questions and response in JSON
-
+  //stores the questions and responses in local storage
   useEffect(() => {
     const responseJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (responseJSON != null) setResponses(JSON.parse(responseJSON))
   }, [])
 
    useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses.reverse()))
   }, [responses])
 
 
@@ -72,16 +69,28 @@ function App() {
     })
   }
   
+  const handleResponseDelete = (id) => {    
+    setResponses(responses.filter(response => response.id !== id))
+
+  }
 
 
 
   return (
-    <div className='h-screen flex flex-col align-center justify-center bg-gray-700'>      
-      <TextInput getResponse={getResponse} question={question} setQuestion={setQuestion} /> 
-      
+    <div className='flex h-screen flex-col bg-wood overflow-auto'>      
+      <TextInput getResponse={getResponse} /> 
+      <div className='flex justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 '>
       {responses.reverse().map(response => {
-        return <ResponseCard key={response.id} question={response.question} reply={response.reply} />
+        return (
+          <ResponseCard
+            key={response.id}
+            response={response}
+            question={response.question}
+            handleResponseDelete={handleResponseDelete}
+            reply={response.reply}
+          />)
       })}
+    </div>
        
     </div>
   )
