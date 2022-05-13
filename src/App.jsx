@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './styles/app.css'
+import './app.css';
 import Form from './components/Form';
+import SiteDetails from './components/SiteDetails';
 
 //mock data
 const mockData = {
@@ -20,7 +21,7 @@ function App() {
 
     setPoem(mockData.text);
     // const data = {
-    //   prompt: "Write a poem about a dog wearing skis",
+    //   prompt: "What did Frodo achieve?",
     //   temperature: 0.5,
     //   max_tokens: 64,
     //   top_p: 1.0,
@@ -48,7 +49,7 @@ function App() {
 
   return (
     <>
-    <Form/>
+      <SiteDetails />
     </>
   )
 }
