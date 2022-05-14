@@ -2,6 +2,7 @@ import React from 'react'
 
 function ResponseCard(props) {
   
+  
   const {handleResponseDelete, response } = props
 
   const {question, reply, id} = response

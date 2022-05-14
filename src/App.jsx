@@ -38,13 +38,13 @@ function App() {
     if (responseJSON != null) setResponses(JSON.parse(responseJSON))
   }, [])
 
+  //When responses changes, this will re-render the component
    useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
   }, [responses])
 
 
-  //calls the api and stores data in state
-  
+  //calls the api and returns the data  
   const getResponse = (question, aI) => {
     const data = {
       prompt: question,

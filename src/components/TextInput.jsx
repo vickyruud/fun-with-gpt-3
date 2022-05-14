@@ -5,12 +5,12 @@ import Alert from './Alert';
 
 function TextInput({ getResponse, setLoading }) {
 
-  const [question, setQuestion] = useState('');
-  const [aI, setAI] = useState('');
-  const [error, setError] = useState(false);
-  const [message, setMessage] = useState('');
+  const [question, setQuestion] = useState('');//sets the question
+  const [aI, setAI] = useState('');//sets the AI engine
+  const [error, setError] = useState(false);//sets the error
+  const [message, setMessage] = useState('');//sets the error message
 
-
+  //handles form submission
   const handleSubmit = () => {
     if (!question) {
       setError(true);
