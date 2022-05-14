@@ -70,7 +70,8 @@ function TextInput({ getResponse, setLoading }) {
             text-white
             font-bold py-2 px-4
             rounded
-            m-3"
+            mt-3
+            md:m-3"
           >
             Submit
           </button>
