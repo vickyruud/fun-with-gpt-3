@@ -65,12 +65,13 @@ function App() {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(data => {
+        //create a new response object
         let newResponse = {
           id: uuidv4(),
           question: question,
           reply: data.choices[0].text
         }
-        setResponses([...responses, newResponse]);
+        setResponses([...responses, newResponse]); //adds latest response to state
         setLoading(false);
         setError(false);
 
