@@ -4,7 +4,6 @@ import TextInput from './components/TextInput';
 import { v4 as uuidv4 } from 'uuid';
 import Loading from './components/Loading';
 import ResponseList from './components/ResponseList';
-import AIEngines from './components/AIEngines';
 import NavBar from './components/NavBar';
 import Alert from './components/Alert';
 
@@ -67,7 +66,7 @@ function App() {
       .then(data => {
         //create a new response object
         let newResponse = {
-          id: uuidv4(),
+          id: uuidv4(), //generates random ID
           question: question,
           reply: data.choices[0].text
         }

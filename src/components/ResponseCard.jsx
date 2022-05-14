@@ -10,7 +10,7 @@ function ResponseCard(props) {
   return ( 
     <div className="flex flex-col align-bottom justify-between p-4  bg-gray-500 rounded-lg border border-gray-200 h-72 w-96 ">
       <h5 className="mb-2 text-xl font-bold tracking-tight text-white">{question}</h5>      
-      <p className="mb-3 font-normal text-white font-semibold ">{reply}</p>     
+      <p className="mb-3 text-white font-semibold ">{reply}</p>     
       <button
             onClick={() => handleResponseDelete(id)}
             className="bg-red-500 hover:bg-orange-600
