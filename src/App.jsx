@@ -4,6 +4,9 @@ import TextInput from './components/TextInput';
 import { v4 as uuidv4 } from 'uuid';
 import Loading from './components/Loading';
 import ResponseList from './components/ResponseList';
+import AIEngines from './components/AIEngines';
+import NavBar from './components/NavBar';
+import Alert from './components/Alert';
 
 
 //Sample Data
@@ -26,6 +29,9 @@ function App() {
   const [responses, setResponses] = useState(sampleData);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+
   //stores the questions and responses in local storage
   useEffect(() => {
     const responseJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
@@ -39,7 +45,7 @@ function App() {
 
   //calls the api and stores data in state
   
-  const getResponse = (question) => {
+  const getResponse = (question, aI) => {
     const data = {
       prompt: question,
       temperature: 0.5,
@@ -50,7 +56,7 @@ function App() {
     };
 
 
-    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+    fetch(`https://api.openai.com/v1/engines/${aI}/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,9 +72,14 @@ function App() {
         }
         setResponses([...responses, newResponse]);
         setLoading(false);
+        setError(false);
+
       })
       .catch(err => {
-      console.log(err);
+        setError(true)
+        setErrorMessage(err.message)
+        setLoading(false);
+        console.log(err);
     })
   }
   
@@ -79,14 +90,19 @@ function App() {
 
 
   return (
-    <div className='flex h-screen flex-col bg-gray-600 overflow-auto'>      
-      <TextInput getResponse={getResponse} setLoading={setLoading} /> 
-      <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 '>
-      {loading ? <Loading/> : null}
-     <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
-    </div>
-       
-    </div>
+    <>
+      <NavBar />  
+      <div className='bg-gray-600 flex flex-col'>
+        <div className='flex  items-center flex-col '> 
+          <TextInput getResponse={getResponse} setLoading={setLoading} /> 
+          {error ? <Alert message={errorMessage}/> : null}
+          <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 p-8 '>
+            {loading ? <Loading/> : null}
+            <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
+          </div>       
+        </div>
+      </div>
+    </>
   )
 }
 
