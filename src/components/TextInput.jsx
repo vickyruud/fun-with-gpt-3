@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 
-function TextInput({ getResponse }) {
+function TextInput({ getResponse, setLoading }) {
 
   const [question, setQuestion] = useState('');
 
 
   const handleSubmit = () => {
+    setLoading(true);
     getResponse(question);
   }
 
@@ -46,7 +47,7 @@ function TextInput({ getResponse }) {
           <div className='flex justify-center py-2 px-4'>
           <button
             onClick={handleSubmit}
-            className="bg-teal-500 hover:bg-blue-400
+            className="bg-blue-500 hover:bg-teal-500
             text-white
             font-bold py-2 px-4
             rounded w-32"
