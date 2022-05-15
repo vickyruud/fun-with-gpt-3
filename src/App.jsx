@@ -101,6 +101,7 @@ function App() {
     })
   }
   
+  //deletes the response
   const handleResponseDelete = (id) => {    
     setResponses(responses.filter(response => response.id !== id));
   }
@@ -118,7 +119,7 @@ function App() {
             {responses.length > 0 ? null :
               <button
                 className="bg-blue-500 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mt-3 md:m-3"
-                onClick={() => loadExamples()}
+                onClick={loadExamples}
               >
             Load Examples
           </button>  }            
