@@ -9,15 +9,19 @@ import Alert from './components/Alert';
 
 
 //Sample Data
-const sampleData = [{
-  id: 1,
-question: "Who is Gandalf?",
-reply: " Gandalf is a wizard who appears in the fictional works of J.R.R. Tolkien. He is one of the most important characters in the story."
-}, {
-  id: 2,
-  question: "Where do the Simpsons live?",
-  reply: "742 Evergreen Terrace"
-}]
+const sampleData = [
+  {
+    id: 1,
+    question: "Who is Gandalf?",
+    reply: " Gandalf is a wizard who appears in the fictional works of J.R.R. Tolkien. He is one of the most important characters in the story."
+  },
+  {
+    id: 2,
+    question: "Where do the Simpsons live?",
+    reply: "742 Evergreen Terrace"
+  }
+]
+
 
 const LOCAL_STORAGE_KEY = 'funWithGPT'
 
@@ -28,6 +32,7 @@ function App() {
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  //sets error and error message
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -43,8 +48,16 @@ function App() {
   }, [responses]);
 
   const loadExamples = () => {
-    setResponses(sampleData);
-    setLoading(false);
+    
+    setLoading(true);
+
+    //allows to display the loading animation for 1 second
+    setTimeout(() => {
+      setResponses(sampleData);
+      setLoading(false);      
+    }, 1000);
+    
+    
   }
 
 
@@ -110,7 +123,7 @@ function App() {
           </button>  } 
            
             {loading ? <Loading/> : null}
-            <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
+            {!loading && <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />}
           </div>       
         </div>
       </div>
