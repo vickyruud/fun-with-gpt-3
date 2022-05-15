@@ -8,7 +8,7 @@ function ResponseCard(props) {
   const {question, reply, id} = response
   
   return ( 
-    <div className="flex flex-col align-bottom justify-between p-4  bg-gray-500 rounded-lg border border-gray-200 md:h-72 sm:w-96 ">
+    <div className="flex flex-col align-bottom justify-between p-4  bg-gray-500 rounded-lg border border-gray-200 md:h-72 max-w-prose ">
       <h5 className="mb-2 text-xl font-bold tracking-tight text-white">{question}</h5>      
       <p className="mb-3 text-white font-semibold ">{reply}</p>     
       <button
