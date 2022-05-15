@@ -84,4 +84,3 @@ function TextInput({ getResponse, setLoading }) {
 
 export default TextInput
 
-//

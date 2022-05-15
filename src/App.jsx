@@ -25,7 +25,7 @@ const LOCAL_STORAGE_KEY = 'funWithGPT'
 function App() {
   
   //store poem in state
-  const [responses, setResponses] = useState(sampleData);
+  const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState(false)
@@ -35,12 +35,17 @@ function App() {
   useEffect(() => {
     const responseJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (responseJSON != null) setResponses(JSON.parse(responseJSON))
-  }, [])
+  }, []);
 
   //When responses changes, this will re-render the component
-   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
-  }, [responses])
+  }, [responses]);
+
+  const loadExamples = () => {
+    setResponses(sampleData);
+    setLoading(false);
+  }
 
 
   //calls the api and returns the data  
@@ -79,7 +84,6 @@ function App() {
         setError(true)
         setErrorMessage(err.message)
         setLoading(false);
-        console.log(err);
     })
   }
   
@@ -97,6 +101,14 @@ function App() {
           <TextInput getResponse={getResponse} setLoading={setLoading} /> 
           {error ? <Alert message={errorMessage}/> : null}
           <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 p-8 '>
+            {responses.length > 0 ? null :
+              <button
+                className="bg-blue-500 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mt-3 md:m-3"
+                onClick={() => loadExamples()}
+              >
+            Load Examples
+          </button>  } 
+           
             {loading ? <Loading/> : null}
             <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
           </div>       
