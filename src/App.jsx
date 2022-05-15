@@ -22,7 +22,7 @@ const sampleData = [
   }
 ]
 
-
+//local storage key
 const LOCAL_STORAGE_KEY = 'funWithGPT'
 
 
@@ -42,11 +42,12 @@ function App() {
     if (responseJSON != null) setResponses(JSON.parse(responseJSON))
   }, []);
 
-  //When responses changes, this will re-render the component
+  //When responses change, this will re-render the component
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
   }, [responses]);
 
+  //loads example prompts and responses
   const loadExamples = () => {
     
     setLoading(true);
@@ -55,7 +56,7 @@ function App() {
     setTimeout(() => {
       setResponses(sampleData);
       setLoading(false);      
-    }, 1000);
+    }, 500);
     
     
   }
