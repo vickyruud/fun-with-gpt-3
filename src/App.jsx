@@ -93,7 +93,7 @@ function App() {
         setError(false);
 
       })
-      .catch(err => {
+      .catch(err => { //handles errors
         setError(true)
         setErrorMessage(err.message)
         setLoading(false);
@@ -120,8 +120,7 @@ function App() {
                 onClick={() => loadExamples()}
               >
             Load Examples
-          </button>  } 
-           
+          </button>  }            
             {loading ? <Loading/> : null}
             <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
           </div>       
