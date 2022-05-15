@@ -27,6 +27,7 @@ function TextInput({ getResponse, setLoading }) {
     getResponse(question, aI);
     const textArea = document.getElementById('textArea');
     textArea.value = ''
+    setQuestion('')
 
   }
 

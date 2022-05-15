@@ -123,7 +123,7 @@ function App() {
           </button>  } 
            
             {loading ? <Loading/> : null}
-            {!loading && <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />}
+            <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
           </div>       
         </div>
       </div>
