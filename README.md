@@ -16,4 +16,4 @@ Here's the live link for the demo.[Demo](https://askai-vickyruud.netlify.app/)
 
 ## Preview
 
-![image](https://github.com/vickyruud/fun-with-gpt-3/blob/main/demo/demo.gif)
+![image](https://github.com/vickyruud/fun-with-gpt-3/blob/main/demo/demo1.gif)
