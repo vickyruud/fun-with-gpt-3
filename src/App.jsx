@@ -6,6 +6,7 @@ import Loading from './components/Loading';
 import ResponseList from './components/ResponseList';
 import NavBar from './components/NavBar';
 import Alert from './components/Alert';
+import Examples from './components/Examples';
 
 
 //Sample Data
@@ -32,33 +33,38 @@ function App() {
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  //sets error and error message
-  const [error, setError] = useState(false)
+  //sets error message
   const [errorMessage, setErrorMessage] = useState('')
 
   //stores the questions and responses in local storage
   useEffect(() => {
     const responseJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (responseJSON != null) setResponses(JSON.parse(responseJSON))
+    try {
+      if (responseJSON != null) setResponses(JSON.parse(responseJSON))
+    } catch (e) {
+      if (e.code === 22) {
+        setErrorMessage('Local Storage is full!')
+      }
+    }
   }, []);
 
   //When responses change, this will re-render the component
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(responses))
+    } catch (e) {
+       if (e.code === 22) {
+        setErrorMessage('Local Storage is full!')
+      }
+    }
   }, [responses]);
 
   //loads example prompts and responses
-  const loadExamples = () => {
-    
+  const loadExamples = () => {    
     setLoading(true);
-
     //allows to display the loading animation for 1 second
-    setTimeout(() => {
-      setResponses(sampleData);
-      setLoading(false);      
-    }, 500);
-    
-    
+    getResponse(sampleData[0].question, 'text-curie-001');    
+    getResponse(sampleData[1].question, 'text-curie-001'); 
   }
 
 
@@ -91,11 +97,10 @@ function App() {
         }
         setResponses([...responses, newResponse]); //adds latest response to state
         setLoading(false);
-        setError(false);
+        setErrorMessage(false);
 
       })
       .catch(err => { //handles errors
-        setError(true)
         setErrorMessage(err.message)
         setLoading(false);
     })
@@ -110,24 +115,21 @@ function App() {
 
   return (
     <>
-      <NavBar />  
+      <NavBar /> 
+      <main>
+
       <div className='bg-gray-600 flex flex-col'>
         <div className='flex  items-center flex-col '> 
           <TextInput getResponse={getResponse} setLoading={setLoading} /> 
-          {error ? <Alert message={errorMessage}/> : null}
+          {errorMessage ? <Alert message={errorMessage}/> : null}
           <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 p-8 '>
-            {responses.length > 0 ? null :
-              <button
-                className="bg-blue-500 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mt-3 md:m-3"
-                onClick={loadExamples}
-              >
-            Load Examples
-          </button>  }            
+            {responses.length > 0 ? null : <Examples loadExamples= {loadExamples}/>}
             {loading ? <Loading/> : null}
             <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
           </div>       
         </div>
       </div>
+    </main>
     </>
   )
 }
