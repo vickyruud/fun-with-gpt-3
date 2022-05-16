@@ -33,7 +33,7 @@ function TextInput({ getResponse, setLoading }) {
   return (
     
     <div className="flex flex-col  p-4 text-white">
-    <form onSubmit={(event) => handleSubmit(event)}>
+    <form onSubmit={handleSubmit}>
     <div className="mb-3 xl:w-96 flex flex-row flex-wrap justify-between">
         <label
           htmlFor="exampleFormControlTextarea1"
