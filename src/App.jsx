@@ -62,9 +62,14 @@ function App() {
   //loads example prompts and responses
   const loadExamples = () => {    
     setLoading(true);
+
     //allows to display the loading animation for 1 second
-    getResponse(sampleData[0].question, 'text-curie-001');    
-    getResponse(sampleData[1].question, 'text-curie-001'); 
+    setTimeout(() => {
+      setResponses(sampleData);
+      setLoading(false);      
+    }, 500);
+    
+    
   }
 
 
