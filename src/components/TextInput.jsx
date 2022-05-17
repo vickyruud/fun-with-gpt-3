@@ -38,8 +38,8 @@ function TextInput({ getResponse, setLoading, loadExample }) {
     <div className="mb-3 xl:w-96 flex flex-col flex-wrap justify-between">
         <label
           htmlFor="exampleFormControlTextarea1"
-          className="form-label inline-block mb-2 text-white font-semibold"
-          >Ask AI anything:       
+          className="form-label inline-block mb-2 text-white text-xl font-semibold"
+          >Get answers to all your trivia questions!      
         </label>
       <input
         className="
