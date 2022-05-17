@@ -75,7 +75,7 @@ function TextInput({ getResponse, setLoading, loadExample }) {
             font-bold py-2 px-4
             rounded
             mt-3
-            w-36
+            w-40
             xl:w-auto
             "
             type='submit'
