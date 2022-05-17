@@ -6,22 +6,9 @@ import Loading from './components/Loading';
 import ResponseList from './components/ResponseList';
 import NavBar from './components/NavBar';
 import Alert from './components/Alert';
-import Examples from './components/Examples';
+import {questions} from './components/questions';
 
 
-//Sample Data
-const sampleData = [
-  {
-    id: 1,
-    question: "Who is Gandalf?",
-    reply: " Gandalf is a wizard who appears in the fictional works of J.R.R. Tolkien. He is one of the most important characters in the story."
-  },
-  {
-    id: 2,
-    question: "Where do the Simpsons live?",
-    reply: "742 Evergreen Terrace"
-  }
-]
 
 //local storage key
 const LOCAL_STORAGE_KEY = 'funWithGPT'
@@ -32,6 +19,8 @@ function App() {
   //store poem in state
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  //sample load counter
 
   //sets error message
   const [errorMessage, setErrorMessage] = useState('')
@@ -61,18 +50,16 @@ function App() {
 
   //loads example prompts and responses
   const loadExamples = () => {    
-    setLoading(true);
-
-    //allows to display the loading animation for 1 second
-    setTimeout(() => {
-      setResponses(sampleData);
-      setLoading(false);      
-    }, 500);
-    
+    setLoading(true);    
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    console.log(randomIndex , questions[randomIndex]);
+    getResponse(questions[randomIndex], 'text-davinci-002');
     
   }
-
-
+  
+ 
+  
+  
   //calls the api and returns the data  
   const getResponse = (question, aI) => {
     const data = {
@@ -125,10 +112,9 @@ function App() {
 
       <div className='bg-gray-600 flex flex-col'>
         <div className='flex  items-center flex-col '> 
-          <TextInput getResponse={getResponse} setLoading={setLoading} /> 
+          <TextInput getResponse={getResponse} setLoading={setLoading} loadExamples={loadExamples} /> 
           {errorMessage ? <Alert message={errorMessage}/> : null}
           <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 p-8 '>
-            {responses.length > 0 ? null : <Examples loadExamples= {loadExamples}/>}
             {loading ? <Loading/> : null}
             <ResponseList responses={responses} handleResponseDelete={handleResponseDelete} />
           </div>       

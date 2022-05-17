@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import AIEngines from './AIEngines';
 import Alert from './Alert';
+import Examples from './Examples';
 
 
-function TextInput({ getResponse, setLoading }) {
+function TextInput({ getResponse, setLoading, loadExamples }) {
 
   const [question, setQuestion] = useState('');//sets the question
   const [aI, setAI] = useState('');//sets the AI engine
@@ -78,8 +79,10 @@ function TextInput({ getResponse, setLoading }) {
             >
             Submit
           </button>
+
       </div>
       </form>
+           <Examples loadExamples= {loadExamples}/>
       {errorMessage ? <Alert message={errorMessage}/> : null}
     </div>
 
