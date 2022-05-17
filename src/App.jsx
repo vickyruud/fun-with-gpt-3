@@ -52,7 +52,6 @@ function App() {
   const loadExample = () => {    
     setLoading(true);    
     const randomIndex = Math.floor(Math.random() * questions.length);
-    console.log(randomIndex , questions[randomIndex]);
     getResponse(questions[randomIndex], 'text-davinci-002');
     
   }

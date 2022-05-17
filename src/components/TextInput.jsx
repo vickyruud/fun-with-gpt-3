@@ -46,7 +46,6 @@ function TextInput({ getResponse, setLoading, loadExample }) {
           form-control
           block
           w-full
-          h-16
           px-3
           py-1.5
           text-base
@@ -67,7 +66,7 @@ function TextInput({ getResponse, setLoading, loadExample }) {
         placeholder="Type your question here..."
         autoFocus
         >
-          </input>
+      </input>
         <AIEngines setAI={setAI} />
           <div className='flex flex-col xl:flex-row justify-between'>
           <button            
