@@ -48,8 +48,8 @@ function App() {
     }
   }, [responses]);
 
-  //loads example prompts and responses
-  const loadExamples = () => {    
+  //loads random question and gets a response
+  const loadExample = () => {    
     setLoading(true);    
     const randomIndex = Math.floor(Math.random() * questions.length);
     console.log(randomIndex , questions[randomIndex]);
@@ -112,7 +112,7 @@ function App() {
 
       <div className='bg-gray-600 flex flex-col'>
         <div className='flex  items-center flex-col '> 
-          <TextInput getResponse={getResponse} setLoading={setLoading} loadExamples={loadExamples} /> 
+          <TextInput getResponse={getResponse} setLoading={setLoading} loadExample={loadExample} /> 
           {errorMessage ? <Alert message={errorMessage}/> : null}
           <div className='justify-center grid auto-rows-auto  grid-flow-row-dense gap-4 p-8 '>
             {loading ? <Loading/> : null}

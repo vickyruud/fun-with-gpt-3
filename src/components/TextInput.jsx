@@ -4,7 +4,7 @@ import Alert from './Alert';
 import Examples from './Examples';
 
 
-function TextInput({ getResponse, setLoading, loadExamples }) {
+function TextInput({ getResponse, setLoading, loadExample }) {
 
   const [question, setQuestion] = useState('');//sets the question
   const [aI, setAI] = useState('');//sets the AI engine
@@ -35,17 +35,18 @@ function TextInput({ getResponse, setLoading, loadExamples }) {
     
     <div className="flex flex-col  p-4 text-white">
     <form onSubmit={handleSubmit}>
-    <div className="mb-3 xl:w-96 flex flex-row flex-wrap justify-between">
+    <div className="mb-3 xl:w-96 flex flex-col flex-wrap justify-between">
         <label
           htmlFor="exampleFormControlTextarea1"
           className="form-label inline-block mb-2 text-white font-semibold"
           >Ask AI anything:       
         </label>
-      <textarea
+      <input
         className="
           form-control
           block
           w-full
+          h-16
           px-3
           py-1.5
           text-base
@@ -66,23 +67,27 @@ function TextInput({ getResponse, setLoading, loadExamples }) {
         placeholder="Type your question here..."
         autoFocus
         >
-        </textarea>
+          </input>
         <AIEngines setAI={setAI} />
+          <div className='flex flex-col xl:flex-row justify-between'>
           <button            
             className="bg-blue-500 hover:bg-teal-500
             text-white
             font-bold py-2 px-4
             rounded
             mt-3
-            md:m-3"
+            w-40
+            xl:w-auto
+            "
             type='submit'
             >
             Submit
           </button>
+           <Examples loadExample= {loadExample} />
+        </div>
 
       </div>
       </form>
-           <Examples loadExamples= {loadExamples}/>
       {errorMessage ? <Alert message={errorMessage}/> : null}
     </div>
 

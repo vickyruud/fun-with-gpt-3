@@ -5,7 +5,7 @@ function AIEngines({ setAI }) {
     <div className='flex items-start'>
       <select className="form-select appearance-none
         block
-        w-64
+        w-full
         text-base
         font-normal
         text-gray-700
