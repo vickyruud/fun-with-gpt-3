@@ -1,6 +1,6 @@
 # Ask AI Anything!
 
-This application allows you to interact with AI Engines and ask them any question. I've created the application using ReactJS and Tailwind css.
+This application allows you to interact with AI Engines and ask them any question. I've created the application using ReactJS and Tailwind CSS.
 
 ## Live Demo
 
