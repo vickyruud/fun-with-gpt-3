@@ -10,9 +10,10 @@ Here's the live link to the [Demo](https://askai-vickyruud.netlify.app/).
 
 1. Clone the repository
 2. Install Dependencies: npm i
-3. Create a .env file using the .env.example as a template
-4. Start server : npm start
-5. Ask away!
+3. Get your API key from [OpenAI](https://beta.openai.com/signup)
+4. Create a .env file using the .env.example as a template
+5. Start server : npm start
+6. Ask away!
 
 ## Preview
 
