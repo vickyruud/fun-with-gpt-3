@@ -108,7 +108,6 @@ function App() {
     <>
       <NavBar /> 
       <main>
-
       <div className='bg-gray-600 flex flex-col'>
         <div className='flex  items-center flex-col '> 
           <TextInput getResponse={getResponse} setLoading={setLoading} loadExample={loadExample} /> 
