@@ -7,7 +7,7 @@ import Examples from './Examples';
 function TextInput({ getResponse, setLoading, loadExample }) {
 
   const [question, setQuestion] = useState('');//sets the question
-  const [aI, setAI] = useState('');//sets the AI engine
+  const [aI, setAI] = useState('text-ada-001');//sets the AI engine
   const [errorMessage, setErrorMessage] = useState('');//sets the error message
 
   //handles form submission
