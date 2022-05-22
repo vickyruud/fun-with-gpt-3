@@ -19,7 +19,6 @@ function AIEngines({ setAI }) {
         rounded
         transition
         ease-in-out
-        mt-3
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         aria-label="Default select example"
         onChange={(e) => setAI(e.target.value)}
