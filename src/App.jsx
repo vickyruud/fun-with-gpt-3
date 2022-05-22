@@ -18,9 +18,7 @@ function App() {
   
   //store poem in state
   const [responses, setResponses] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  //sample load counter
+  const [loading, setLoading] = useState(false);  
 
   //sets error message
   const [errorMessage, setErrorMessage] = useState('')
