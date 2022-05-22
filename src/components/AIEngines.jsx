@@ -4,7 +4,7 @@ function AIEngines({ setAI }) {
   return (
     <div className='flex flex-col items-start'>
        <label
-          htmlFor="exampleFormControlTextarea1"
+          htmlFor="select-ai-engine"
           className="form-label inline-block mb-2 text-white text-xl font-semibold mt-4"
           >Select an AI Engine:       
         </label>

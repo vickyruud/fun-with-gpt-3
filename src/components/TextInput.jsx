@@ -37,7 +37,7 @@ function TextInput({ getResponse, setLoading, loadExample }) {
     <form onSubmit={handleSubmit}>
     <div className="mb-3 xl:w-96 flex flex-col flex-wrap justify-between">
         <label
-          htmlFor="exampleFormControlTextarea1"
+          htmlFor="textarea"
           className="form-label inline-block mb-2 text-white text-xl font-semibold"
           >Get answers to all your trivia questions!      
         </label>
