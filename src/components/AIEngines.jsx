@@ -23,10 +23,9 @@ function AIEngines({ setAI }) {
         aria-label="Default select example"
         onChange={(e) => setAI(e.target.value)}
       >
-        <option defaultValue>Select an AI Engine</option>
         <option value="text-ada-001">Ada</option>
         <option value="text-babbage-001">Babbage</option>
-        <option selected="selected" value="text-curie-001">Curie</option>
+        <option value="text-curie-001">Curie</option>
         <option value="text-davinci-002">Da Vinci</option>
       </select>
     </div>
