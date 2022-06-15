@@ -4,7 +4,7 @@ This application allows you to interact with AI Engines and ask them any questio
 
 ## Live Demo
 
-Here's the live link to the [Demo](https://askai-vickyruud.netlify.app/).
+Here's the live link to the [Demo](https://triv-ai.netlify.app/).
 
 ## Setup
 
