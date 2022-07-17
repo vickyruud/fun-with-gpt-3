@@ -1,0 +1,8 @@
+{
+	"appId": "io.ionic.trivai",
+	"appName": "trivai",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"cordova": {}
+}

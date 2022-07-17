@@ -1,0 +1,7 @@
+{
+    "name": "trivai",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
