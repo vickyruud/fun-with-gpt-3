@@ -18,3 +18,7 @@ Here's the live link to the [Demo](https://triv-ai.netlify.app/).
 ## Preview
 
 ![image](https://github.com/vickyruud/fun-with-gpt-3/blob/main/demo/demo1.gif)
+
+## Apk file
+
+The Apk file is at this [link](https://github.com/vickyruud/fun-with-gpt-3/blob/main/public/trivai.apk)
