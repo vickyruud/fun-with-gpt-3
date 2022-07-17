@@ -15,9 +15,6 @@ Here's the live link to the [Demo](https://triv-ai.netlify.app/).
 5. Start server : npm start
 6. Ask away!
 
-## Apk file
-
-The Apk file is at this [link](https://github.com/vickyruud/fun-with-gpt-3/blob/main/public/trivai.apk)
 
 ## Preview
 
