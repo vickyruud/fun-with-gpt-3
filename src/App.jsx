@@ -16,7 +16,7 @@ const LOCAL_STORAGE_KEY = 'funWithGPT'
 
 function App() {
   
-  //store poem in state
+  //store  in state
   const [responses, setResponses] = useState([]);
   const [loading, setLoading] = useState(false);  
 
