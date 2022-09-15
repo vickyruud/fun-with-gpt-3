@@ -68,7 +68,7 @@ function App() {
       presence_penalty: 0.0,
     };
 
-
+    console.log(process.env.REACT_APP_API_KEY);
     fetch(`https://api.openai.com/v1/engines/${aI}/completions`, {
       method: "POST",
       headers: {
@@ -78,15 +78,21 @@ function App() {
       body: JSON.stringify(data),
     }).then(res => res.json())
       .then(data => {
-        //create a new response object
-        let newResponse = {
-          id: uuidv4(), //generates random ID
-          question: question,
-          reply: data.choices[0].text
+        
+        if(data.choices) {
+
+          //create a new response object
+          let newResponse = {
+            id: uuidv4(), //generates random ID
+            question: question,
+            reply: data.choices[0].text
+          }
+          setResponses([...responses, newResponse]); //adds latest response to state
+          setLoading(false);
+          setErrorMessage(false);
+        } else {
+          setErrorMessage(data.error.message)
         }
-        setResponses([...responses, newResponse]); //adds latest response to state
-        setLoading(false);
-        setErrorMessage(false);
 
       })
       .catch(err => { //handles errors
