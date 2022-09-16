@@ -80,7 +80,6 @@ function App() {
       .then(data => {
         
         if(data.choices) {
-
           //create a new response object
           let newResponse = {
             id: uuidv4(), //generates random ID
@@ -92,6 +91,11 @@ function App() {
           setErrorMessage(false);
         } else {
           setErrorMessage(data.error.message)
+          setLoading(false);
+          setTimeout(() => {
+          setErrorMessage(false);
+            
+          }, 7000);
         }
 
       })
